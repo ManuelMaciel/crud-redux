@@ -1,24 +1,30 @@
-import React from "react";
-import { createNewProductAction } from '../actions/productActions'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from "react";
+import { createNewProductAction } from "../actions/productActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const NewProduct = () => {
+
+  const [ name, setName ] = useState('');
+  const [ price, setPrice ] = useState(0);
 
   // use dispatch to create a function
   const dispatch = useDispatch();
   // call the action from productActions
-  const addProduct = () => dispatch( createNewProductAction () )
+  const addProduct = (product) => dispatch(createNewProductAction(product));
 
   const submitNewProduct = (e) => {
     e.preventDefault();
 
     // validate form
-
+    if(name.trim() === '' || price <= 0) return;
     // check if exist errors
 
     // crete the new product
-    addProduct()
-  }
+    addProduct({
+      name,
+      price
+    });
+  };
 
   return (
     <div className="row justify-content-center">
@@ -28,9 +34,7 @@ const NewProduct = () => {
             <div className="text-center mb-4 font-weight-bold">
               Add new product
             </div>
-            <form
-              onSubmit={submitNewProduct}
-            >
+            <form onSubmit={submitNewProduct}>
               <div className="form-group">
                 <label>Product Name</label>
                 <input
@@ -38,6 +42,8 @@ const NewProduct = () => {
                   className="form-control"
                   placeholder="Product Name"
                   name="name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
                 />
               </div>
               <div className="form-group">
@@ -47,6 +53,8 @@ const NewProduct = () => {
                   className="form-control"
                   placeholder="Product Price"
                   name="name"
+                  value={price}
+                  onChange={e => setPrice( Number(e.target.value) )}
                 />
               </div>
               <button

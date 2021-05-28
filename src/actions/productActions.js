@@ -4,8 +4,8 @@ import {
   ADD_PRODUCT_ERROR
 } from '../types'
 
-export function createNewProductAction() {
+export function createNewProductAction(product) {
   return () => {
-    console.log('from action')
+    console.log(product)
   }
 }
