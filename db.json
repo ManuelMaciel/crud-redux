@@ -1,29 +1,29 @@
 {
-  "productos": [
+  "products": [
     {
       "id": 1,
-      "nombre": "Jugo de Zanahoria",
-      "precio": "31111"
+      "name": "Carrot Juice",
+      "price": "3"
     },
     {
       "id": 2,
-      "nombre": "Jugo de Naranja",
-      "precio": "1"
+      "name": "Orange Juice",
+      "price": "2"
     },
     {
-      "nombre": "Jugo de Naranja",
-      "precio": "300",
-      "id": 3
+      "id": 3,
+      "name": "Pear Juice",
+      "price": "3"
     },
     {
-      "nombre": "Rib Eye 800g",
-      "precio": "200",
-      "id": 4
+      "id": 4,
+      "name": "Rib Eye 800g",
+      "price": "5"
     },
     {
-      "nombre": "Jugo de Fresa",
-      "precio": "200",
-      "id": 5
+      "id": 5,
+      "name": "Strawberry Juice",
+      "price": "4"
     }
   ]
 }
