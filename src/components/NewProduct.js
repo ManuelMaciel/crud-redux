@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createNewProductAction } from "../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
 
-const NewProduct = () => {
+const NewProduct = ({ history }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
 
@@ -27,6 +27,8 @@ const NewProduct = () => {
       name,
       price,
     });
+    // redirect to home page
+    history.push("/");
   };
 
   return (
@@ -68,7 +70,11 @@ const NewProduct = () => {
               </button>
             </form>
             {loading ? <p>Loading...</p> : null}
-            {error ? <p className="alert alert-danger p2 mt-3 text-center">There was an error</p> : null}
+            {error ? (
+              <p className="alert alert-danger p2 mt-3 text-center">
+                There was an error
+              </p>
+            ) : null}
           </div>
         </div>
       </div>

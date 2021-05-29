@@ -84,6 +84,11 @@
       "name": "Vapeador Vopoo Drag 3",
       "price": 1000,
       "id": 17
+    },
+    {
+      "name": "Huawei P40 Lite",
+      "price": 3000,
+      "id": 18
     }
   ]
 }
