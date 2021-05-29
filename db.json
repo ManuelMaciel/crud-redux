@@ -89,6 +89,11 @@
       "name": "Huawei P40 Lite",
       "price": 3000,
       "id": 18
+    },
+    {
+      "name": "Manuel",
+      "price": 213,
+      "id": 19
     }
   ]
 }

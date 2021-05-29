@@ -15,7 +15,7 @@ export function createNewProductAction(product) {
     // update the state
     dispatch(addProduct());
     try {
-      await axiosClient.post("/product", product);
+      await axiosClient.post("/products", product);
       dispatch(addProductSucess(product));
       Swal.fire("Success", "Your product was successfully added", "success");
     } catch (error) {
