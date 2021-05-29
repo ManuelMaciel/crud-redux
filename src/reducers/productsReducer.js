@@ -1,8 +1,11 @@
 import {
   ADD_PRODUCT,
   ADD_PRODUCT_SUCCESS,
-  ADD_PRODUCT_ERROR
-} from '../types'
+  ADD_PRODUCT_ERROR,
+  DOWNLOAD_PRODUCTS,
+  DOWNLOAD_PRODUCTS_SUCCESS,
+  DOWNLOAD_PRODUCTS_ERROR,
+} from "../types";
 // each reducer has its own state
 const initialState = {
   products: [],
@@ -12,6 +15,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case DOWNLOAD_PRODUCTS:
     case ADD_PRODUCT:
       return {
         ...state,
@@ -22,15 +26,24 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: false,
+        error: null,
         products: [ ...state.products, action.payload ],
-        error: false
       }
-
+    
+    case DOWNLOAD_PRODUCTS_ERROR:
     case ADD_PRODUCT_ERROR:
       return {
         ...state,
         loading: false,
         error: action.payload
+      }
+
+    case DOWNLOAD_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        products: action.payload
       }
 
     default:
