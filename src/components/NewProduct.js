@@ -1,28 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createNewProductAction } from "../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
 
 const NewProduct = () => {
-
-  const [ name, setName ] = useState('');
-  const [ price, setPrice ] = useState(0);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
 
   // use dispatch to create a function
   const dispatch = useDispatch();
   // call the action from productActions
   const addProduct = (product) => dispatch(createNewProductAction(product));
 
+  // access the state of the store
+  const loading = useSelector((state) => state.products.loading);
+  const error = useSelector((state) => state.products.error);
+
   const submitNewProduct = (e) => {
     e.preventDefault();
 
     // validate form
-    if(name.trim() === '' || price <= 0) return;
+    if (name.trim() === "" || price <= 0) return;
     // check if exist errors
 
     // crete the new product
     addProduct({
       name,
-      price
+      price,
     });
   };
 
@@ -43,7 +46,7 @@ const NewProduct = () => {
                   placeholder="Product Name"
                   name="name"
                   value={name}
-                  onChange={e => setName(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="form-group">
@@ -54,7 +57,7 @@ const NewProduct = () => {
                   placeholder="Product Price"
                   name="name"
                   value={price}
-                  onChange={e => setPrice( Number(e.target.value) )}
+                  onChange={(e) => setPrice(Number(e.target.value))}
                 />
               </div>
               <button
@@ -64,6 +67,8 @@ const NewProduct = () => {
                 Add Product
               </button>
             </form>
+            {loading ? <p>Loading...</p> : null}
+            {error ? <p className="alert alert-danger p2 mt-3 text-center">There was an error</p> : null}
           </div>
         </div>
       </div>

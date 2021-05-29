@@ -22,7 +22,8 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: false,
-        products: [ ...state.products, action.payload ]
+        products: [ ...state.products, action.payload ],
+        error: false
       }
 
     case ADD_PRODUCT_ERROR:
